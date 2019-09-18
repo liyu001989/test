@@ -45,12 +45,12 @@ return [
         ],
 
         'thread' => [
-            'salt' => 'thread',
+            'salt' => env('HASHID_SALT_PREFIX').'-thread',
             'length' => 9,
         ],
 
         'user' => [
-            'salt' => 'user',
+            'salt' => env('HASHID_SALT_PREFIX').'-user',
             'length' => 7,
         ],
 
