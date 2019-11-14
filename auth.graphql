@@ -1,0 +1,20 @@
+type TokenPayload {
+    access_token: String!
+    expires_in: Int!
+    token_type: String!
+}
+
+input LoginInput {
+    username: String!
+    password: String! @rules(apply: ["min:6", "alpha_dash"])
+}
+
+type LoginResponse {
+    token: TokenPayload!
+    user: User
+}
+
+extend type Mutation {
+    login(input: LoginInput @spread): LoginResponse!
+    refresh: TokenPayload!
+}
