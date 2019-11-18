@@ -43,17 +43,18 @@ return [
             'salt' => 'main-salt',
             'length' => 6,
         ],
-
         'thread' => [
             'salt' => env('HASHID_SALT_PREFIX').'-thread',
             'length' => 9,
         ],
-
+        'reply' => [
+            'salt' => env('HASHID_SALT_PREFIX').'-reply',
+            'length' => 9,
+        ],
         'user' => [
             'salt' => env('HASHID_SALT_PREFIX').'-user',
             'length' => 7,
         ],
-
     ],
 
 ];
