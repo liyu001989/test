@@ -1,5 +1,5 @@
 type User {
-    id: ID! @globalId
+    id: ID! @hashId(conn: "user")
     name: String!
     email: String!
     created_at: DateTime!
@@ -7,8 +7,8 @@ type User {
 }
 
 extend type Query {
-    users: [User!]! @paginate(type: "paginator")
-    user(id: ID @globalId(decode: ID) @eq): User! @find
+    users: [User]! @paginate(type: "paginator")
+    user(id: ID @hashId(conn: "user") @eq): User! @find
     userByEmail(email: String @eq): User @find
     me: User @auth(guard: "api") @middleware(checks: ["auth:api"])
 }

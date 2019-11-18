@@ -5,7 +5,7 @@ type TokenPayload {
 }
 
 input LoginInput {
-    username: String!
+    username: String! @rules(apply: ["string"])
     password: String! @rules(apply: ["min:6", "alpha_dash"])
 }
 
@@ -14,7 +14,12 @@ type LoginResponse {
     user: User
 }
 
+type LogoutResponse {
+    status: String!
+}
+
 extend type Mutation {
     login(input: LoginInput @spread): LoginResponse!
     refresh: TokenPayload!
+    logout: LogoutResponse! @middleware(checks: ["auth:api"])
 }
