@@ -10,4 +10,6 @@ type Mutation
 
 #import user.graphql
 #import auth.graphql
+#import channel.graphql
 #import thread.graphql
+#import reply.graphql

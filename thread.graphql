@@ -1,0 +1,15 @@
+type Thread {
+    id: ID! @hashId(conn: "thread")
+    title: String
+    user_id: ID!
+    user: User @belongsTo
+    channel_id: ID!
+    channel: Channel @belongsTo
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+extend type Query {
+    threads: [Thread]! @paginate(type: "paginator")
+    thread(id: ID @hashId(conn: "thread") @eq): Thread! @find
+}

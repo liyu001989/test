@@ -1,0 +1,12 @@
+type Channel {
+    id: ID
+    name: String
+    parent_id: ID
+    parend: Channel @belongsTo
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+extend type Query {
+    channels: [Channel]! @all
+}

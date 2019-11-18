@@ -1,0 +1,14 @@
+type Reply {
+    id: ID! @hashId(conn: "reply")
+    content: String
+    user_id: ID!
+    user: User @belongsTo
+    thread_id: ID!
+    thread: Thread @belongsTo
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+extend type Query {
+    replies(thread_id: ID @hashId(conn: "thread") @eq(key: "thread_id")): [Reply]! @paginate(type: "paginator")
+}
