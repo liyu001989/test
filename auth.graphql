@@ -3,7 +3,6 @@ type TokenPayload {
     expires_in: Int!
     token_type: String!
 }
-// test 2
 
 input LoginInput {
     username: String! @rules(apply: ["string"])
